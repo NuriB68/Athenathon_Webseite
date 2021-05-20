@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Athenathon_Webseite.Models
 {
+    //Tabelle Nutzer mit den Spalten Id, Email und University
     public class User
     {
         [Key]
         public int Id { get; set; }
-
+        [Required]
         public string Email { get; set; }
-
+        [Required]
+        [RegularExpression("Siegen|Orleans|Porto|Rome|Crete|Maribor|Vilnius")]
         public string University { get; set; }
     }
 }
