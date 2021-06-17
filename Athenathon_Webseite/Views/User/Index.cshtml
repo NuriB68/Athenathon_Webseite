@@ -26,6 +26,12 @@
                         University
                     </th>
                     <th>
+                        Password
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
                         Manage
                     </th>
                 </tr>
@@ -38,8 +44,10 @@
                     <td width="10%">@user.Id</td>
                     <td width="30%">@user.Email</td>
                     <td width="30%">@user.University</td>
+                    <td width="30%">@user.Password</td>
+                    <td width="30%">@user.Name</td>
                     <td width="40%">
-                        <div class="w-75 btn-group"role="group">
+                        <div class="w-75 btn-group" role="group">
                             <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
                             <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>
                         </div>
