@@ -10,6 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Athenathon_Webseite.Services;
 
 namespace Athenathon_Webseite
 {
@@ -29,6 +32,36 @@ namespace Athenathon_Webseite
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddControllersWithViews();
+            services.AddScoped<UserService>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                  .AddCookie(options => {
+                      options.LoginPath = "/login";
+                      options.AccessDeniedPath = "/denied";
+                      options.Events = new CookieAuthenticationEvents()
+                      {
+                          OnSigningIn = async context =>
+                          {
+
+                              var principal = context.Principal;
+
+                              var claimsIdentity = context.Principal.Identity as ClaimsIdentity;
+                              var userService = context.HttpContext.RequestServices.GetRequiredService(typeof(UserService)) as UserService;
+                              var nameIdentifier = claimsIdentity.Claims.FirstOrDefault(m => m.Type == ClaimTypes.NameIdentifier)?.Value;
+
+                              await Task.CompletedTask;
+                          },
+                          OnSignedIn = async context =>
+                          {
+                              await Task.CompletedTask;
+                          },
+                          OnValidatePrincipal = async context =>
+                          {
+                              await Task.CompletedTask;
+                          }
+                      };
+
+                  });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +81,7 @@ namespace Athenathon_Webseite
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

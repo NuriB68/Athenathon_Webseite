@@ -17,11 +17,14 @@ namespace Athenathon_Webseite.Models
         public string Email { get; set; }
         [Required]
         //Validierung der Universitätseingabe
-        [RegularExpression("Siegen|Orleans|Porto|Rome|Crete|Maribor|Vilnius",ErrorMessage ="University is not part of the Event")]
+        [RegularExpression("Siegen|Orleans|Porto|Rome|Crete|Maribor|Vilnius", ErrorMessage = "University is not part of the Event")]
         public string University { get; set; }
         [Required]
         public string Password { get; set; }
         [Required]
         public string Name { get; set; }
+
+        public string Roles { get; set; }
+
     }
 }
