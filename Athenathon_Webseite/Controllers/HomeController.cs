@@ -31,7 +31,6 @@ namespace Athenathon_Webseite.Controllers
         {
             return View();
         }
-
         public IActionResult Privacy()
         {
             return View();

@@ -25,6 +25,7 @@ namespace Athenathon_Webseite.Models
         public string Name { get; set; }
 
         public string Roles { get; set; }
+        public ICollection<UserDistance> UserDistances { get; set; }
 
     }
 }
