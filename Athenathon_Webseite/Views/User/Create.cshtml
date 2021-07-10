@@ -28,8 +28,16 @@
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="col-3">
-                        <input asp-for="University" class="form-control" />
-                        <span asp-validation-for="University" class="text-danger"></span>
+                        <select asp-for="University">
+                            <option selected disabled>Select University</option>
+                            <option>Crete</option>
+                            <option>Maribor</option>
+                            <option>Orleans</option>
+                            <option>Porto</option>
+                            <option>Rome</option>
+                            <option>Siegen</option>
+                            <option>Vilnius</option>
+                        </select>
                     </div>
                     <div class="col-3">
                         <input asp-for="Name" class="form-control" />

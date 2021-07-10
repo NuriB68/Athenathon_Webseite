@@ -10,11 +10,12 @@ namespace Athenathon_Webseite.Models
     {
         [Key]
         public int DistanceId { get; set; }
-        public int Distance { get; set; }
+        public double Distance { get; set; }
         public string TypeOfSport { get; set; }
-        public int DayTime { get; set; }
+        [RegularExpression(@"^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", ErrorMessage = "Format must be VW:XY")]
+        public string DayTime { get; set; }
         public int Duration { get; set; }
-        public int AverageSpeed { get; set; }
+        public double AverageSpeed { get; set; }
         public int CaloriesBurned { get; set; }
         public User User { get; set; }  
             

@@ -16,8 +16,6 @@ namespace Athenathon_Webseite.Models
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$", ErrorMessage = "University mail from participating universities required")]
         public string Email { get; set; }
         [Required]
-        //Validierung der Universitätseingabe
-        [RegularExpression("Siegen|Orleans|Porto|Rome|Crete|Maribor|Vilnius", ErrorMessage = "University is not part of the Event")]
         public string University { get; set; }
         [Required]
         public string Password { get; set; }
