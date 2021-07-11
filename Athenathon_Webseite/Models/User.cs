@@ -9,6 +9,10 @@ namespace Athenathon_Webseite.Models
     //Tabelle Nutzer mit den Spalten Id, Email und University
     public class User
     {
+        public User()
+        {
+            UserDistances = new List<UserDistance>();
+        }
         [Key]
         public int Id { get; set; }
         [Required]
@@ -23,7 +27,7 @@ namespace Athenathon_Webseite.Models
         public string Name { get; set; }
 
         public string Roles { get; set; }
-        public ICollection<UserDistance> UserDistances { get; set; }
+        public List<UserDistance> UserDistances { get; set; }
 
     }
 }

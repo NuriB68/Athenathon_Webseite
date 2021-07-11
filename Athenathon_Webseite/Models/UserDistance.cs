@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Athenathon_Webseite.Models
 {
@@ -17,6 +18,9 @@ namespace Athenathon_Webseite.Models
         public int Duration { get; set; }
         public double AverageSpeed { get; set; }
         public int CaloriesBurned { get; set; }
+
+        [ForeignKey("User")]
+        public int Id { get; set; }
         public User User { get; set; }  
             
     }   
