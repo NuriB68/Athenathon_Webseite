@@ -22,11 +22,15 @@ namespace Athenathon_Webseite.Controllers
          Nutzer mit ihren Details anzeigt und weitere Optionen bietet */
 
         [Authorize(Roles = "Admin, Supervisor")]  // hier haben Admin und Supervisor Zugang
-        public IActionResult Index()
+        public IActionResult Index(string searchText)
         {
-            IEnumerable<User> objList = _db.Users.Where(user => user.Roles != "Admin");
-            return View(objList);
+            return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText) && a.Roles != "Admin" || a.Name.Contains(searchText) && a.Roles != "Admin" ||
+            a.Roles.Contains(searchText) && a.Roles != "Admin" || a.University.Contains(searchText) && a.Roles != "Admin" || searchText == null && a.Roles != "Admin").ToList());
+            //IEnumerable<User> objList = _db.Users.Where(user => user.Roles != "Admin");
+            //return View(objList);
         }
+
+        
 
         // GET Create
         /* Leitet weiter zur Ansicht der Nutzererstellung */
@@ -179,5 +183,7 @@ namespace Athenathon_Webseite.Controllers
             //    }
             return View(obj);
         }
+
+        
     }
 }

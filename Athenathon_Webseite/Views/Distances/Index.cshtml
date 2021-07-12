@@ -1,73 +1,93 @@
 ﻿@model IEnumerable<Athenathon_Webseite.Models.UserDistance>
 
 
-        <div class="container p-3">
-            <div class="row pt-4">
-                <div class="col-6">
-                    <h2 class="text-primary">All Distances</h2>
-                </div>
-                <div class="col-6 text-right">
-                    <a asp-controller="Distances" asp-action="..........." class="btn btn-primary">Add Distances</a>
-                </div>
-            </div>
-            <br />
-            @if (Model.Count() > 0)
-            {
-                <table class="table table-bordered table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>
-                                User Id
-                            </th>
-                            <th>
-                                Distance Id
-                            </th>
-                            <th>
-                                Distance
-                            </th>
-                            <th>
-                                Sport Type
-                            </th>
-                            <th>
-                                Time of day
-                            </th>
-                            <th>
-                                Duration
-                            </th>
-                            <th>
-                                Average Speed
-                            </th>
-                            <th>
-                                Burned Calories
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @*Repräsentation aller aktuell in der Datenbank vorhandenen Nutzer*@
-                        @foreach (var userDistance in Model)
-                        {
-                            <tr>
-                                <td width="5%">@userDistance.User</td>
-                                <td width="5%">@userDistance.DistanceId</td>
-                                <td width="20%">@userDistance.Distance km</td>
-                                <td width="20%">@userDistance.TypeOfSport</td>
-                                <td width="20%">@userDistance.DayTime</td>
-                                <td width="20%">@userDistance.Duration minutes</td>
-                                <td width="20%">@userDistance.AverageSpeed km/h</td>
-                                <td width="20%">@userDistance.CaloriesBurned kcal</td>
-                                @*   <td width="40%">
-                                    <div class="w-75 btn-group" role="group">
-                                        <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
-                                        <a asp-controller="User" asp-action="UpdateRole" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update Role</a>
-                                        <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>
-                                    </div>
-                                
-                                </td>*@
-                            </tr>
-                        }
-                    </tbody>
-                </table> }
-            else
-            {
-                <p>No Distances recorded!</p>}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">All Distances</h2>
         </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Distances" asp-action="Create" class="btn btn-primary">New Distance-Entry</a>
+        </div>
+        <div class="col-3">
+            @using (Html.BeginForm("Index", "Distances", FormMethod.Get))
+            {
+                @Html.TextBox("searchText")<input type="submit" value="Search" />            }
+           
+        </div>
+        <p class="text-primary">You can search after User-ID, User-Name and Sport Type</p>
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Distance ID
+                    </th>
+                    <th>
+                        User ID
+                    </th>
+                    <th>
+                        Distance
+                    </th>
+                    <th>
+                        Sport Type
+                    </th>
+                    <th>
+                        Time of day
+                    </th>
+                    <th>
+                        Duration
+                    </th>
+                    <th>
+                        Average Speed
+                    </th>
+                    <th>
+                        Burned Calories
+                    </th>
+                    <th>
+                        Manage
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @*Repräsentation aller aktuell in der Datenbank vorhandenen Nutzer*@
+                @foreach (var userDistance in Model)
+                {
+                <tr>
+                    <td width="5%">@userDistance.DistanceId</td>
+                    <td width="5%">@userDistance.Id</td>
+                    <td width="20%">@userDistance.Distance km</td>
+                    <td width="20%">@userDistance.TypeOfSport</td>
+                    <td width="20%">@userDistance.DayTime</td>
+                    <td width="20%">@userDistance.Duration minutes</td>
+                    <td width="20%">@userDistance.AverageSpeed km/h</td>
+                    <td width="20%">@userDistance.CaloriesBurned kcal</td>
+
+                    <td width="40%">
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Distances" asp-action="Update" asp-route-Id="@userDistance.DistanceId" class="btn btn-primary mx-1">Update</a>
+
+                            <a asp-controller="Distances" asp-action="Delete" asp-route-Id="@userDistance.DistanceId" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table> }
+    else
+    {
+        <p>No Distances recorded!</p>}
+
+
+<div class="form-group row">
+    <div class="col-2">
+        <a asp-action="Index" padding="10px 24px" class="btn btn-info w-75">Back to all</a>
+    </div>
+    
+    </div>
+</div>
+ 
