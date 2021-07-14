@@ -112,6 +112,7 @@ namespace Athenathon_Webseite.Controllers
         /* Löschung des Nutzers mit der jeweiligen Id aus der Datenbank
            und Weiterleitung zur Index-Ansicht */
 
+
         [Authorize(Roles = "Admin, Supervisor")]
 
         [HttpPost]
@@ -123,8 +124,7 @@ namespace Athenathon_Webseite.Controllers
             {
                 return NotFound();
             }
-
-            _db.UserDistances.Remove(obj);
+ 
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
