@@ -19,5 +19,6 @@ namespace Athenathon_Webseite.Data
         //Einbindung der User Tabelle in den DbContext
         public DbSet<User> Users { get; set; }
         public DbSet<UserDistance> UserDistances { get; set; }
+
     }
 }

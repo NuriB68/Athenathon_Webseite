@@ -124,7 +124,7 @@ namespace Athenathon_Webseite.Controllers
             {
                 return NotFound();
             }
- 
+
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
