@@ -124,7 +124,7 @@ namespace Athenathon_Webseite.Controllers
             {
                 return NotFound();
             }
-
+            _db.UserDistances.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
