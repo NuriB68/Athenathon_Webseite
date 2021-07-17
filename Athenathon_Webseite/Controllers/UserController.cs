@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Athenathon_Webseite.Services;
 
 namespace Athenathon_Webseite.Controllers
 {
@@ -18,16 +20,22 @@ namespace Athenathon_Webseite.Controllers
             _db = db;
         }
 
+
         /* Startseite der User page, welche die Liste der aktuellen
          Nutzer mit ihren Details anzeigt und weitere Optionen bietet */
 
         [Authorize(Roles = "Admin, Supervisor")]  // hier haben Admin und Supervisor Zugang
         public IActionResult Index(string searchText)
         {
-            return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText) && a.Roles != "Admin" || a.Name.Contains(searchText) && a.Roles != "Admin" ||
-            a.Roles.Contains(searchText) && a.Roles != "Admin" || a.University.Contains(searchText) && a.Roles != "Admin" || searchText == null && a.Roles != "Admin").ToList());
-            //IEnumerable<User> objList = _db.Users.Where(user => user.Roles != "Admin");
-            //return View(objList);
+            if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin kann jeden sehen und bearbeiten
+            {
+
+                return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText)  || a.Name.Contains(searchText)  ||
+                a.Roles.Contains(searchText)  || a.University.Contains(searchText)   || searchText == null ).ToList());
+            } else {  // Supervisor sieht nur User
+                return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText) &&  a.Roles == "User" || a.Name.Contains(searchText) && a.Roles == "User" ||
+                a.Roles.Contains(searchText) && a.Roles == "User" || a.University.Contains(searchText) && a.Roles == "User" || searchText == null && a.Roles == "User").ToList());
+            }
         }
 
         
@@ -38,7 +46,7 @@ namespace Athenathon_Webseite.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            return View();
+                return View();
         }
 
         // POST Create
@@ -65,7 +73,7 @@ namespace Athenathon_Webseite.Controllers
         /* Weiterleitung zur Ansicht, wo der Nutzer mit der entsprechenden
            Id angezeigt wird und die Option des Löschens vorliegt */
 
-        [Authorize(Roles = "Admin, Supervisor")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -84,7 +92,7 @@ namespace Athenathon_Webseite.Controllers
         /* Löschung des Nutzers mit der jeweiligen Id aus der Datenbank
            und Weiterleitung zur Index-Ansicht */
 
-        [Authorize(Roles = "Admin, Supervisor")]
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         [ValidateAntiForgeryToken]

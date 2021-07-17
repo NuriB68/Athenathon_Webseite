@@ -1,18 +1,21 @@
 ﻿@model IEnumerable<Athenathon_Webseite.Models.User>
-
+@using System.Security.Claims;
 
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h4 class="text-primary">User list</h4>
+            <h2 class="text-primary">User list</h2>
         </div>
-        <div class="col-6 text-right">
-            <a asp-controller="User" asp-action="Create" class="btn btn-primary">Add new User</a>
+       
+    <div class="col-6 text-right">
+        @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+        {
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary">Add new User</a>}
         </div>
         <div class="col-3">
             @using (Html.BeginForm("Index", "User", FormMethod.Get))
             {
-    @Html.TextBox("searchText")<input type="submit" value="Search" />}
+                @Html.TextBox("searchText")<input type="submit" value="Search" />}
         </div>
         <p class="text-primary">You can search after User-ID, User-Name, University and Role</p>
     </div>
@@ -59,9 +62,11 @@
         <td width="40%">
             <div class="w-75 btn-group" role="group">
                 <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
-                <a asp-controller="User" asp-action="UpdateRole" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update Role</a>
-                <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>
-            </div>
+                @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+                {
+                    <a asp-controller="User" asp-action="UpdateRole" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update Role</a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>}
+                </div>
         </td>
     </tr>
            }
@@ -70,7 +75,7 @@
 else
 {
     <p>No Users registered!</p>}
-
+    
     <div class="form-group row">
     <div class="col-2">
         <a asp-action="Index" padding="10px 24px" class="btn btn-info w-75">Back to all</a>
