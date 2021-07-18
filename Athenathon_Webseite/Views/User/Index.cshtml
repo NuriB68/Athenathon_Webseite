@@ -6,19 +6,28 @@
         <div class="col-6">
             <h2 class="text-primary">User list</h2>
         </div>
-       
-    <div class="col-6 text-right">
-        @if (User.HasClaim(ClaimTypes.Role, "Admin"))
-        {
-            <a asp-controller="User" asp-action="Create" class="btn btn-primary">Add new User</a>}
+
+        <div class="col-6 text-right">
+            @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+            {
+                <a asp-controller="User" asp-action="Create" class="btn btn-primary">Add new User</a>
+            }
         </div>
         <div class="col-3">
             @using (Html.BeginForm("Index", "User", FormMethod.Get))
             {
                 @Html.TextBox("searchText")<input type="submit" value="Search" />}
         </div>
-        <p class="text-primary">You can search after User-ID, User-Name, University and Role</p>
+        @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+        {
+            <p class="text-primary">You can search after User-ID, User-Name, University and Role</p> 
+        }
+        else
+        {
+            <p class="text-primary">You can search after User-ID, User-Name and University</p>
+        }
     </div>
+
         <br />
         @if (Model.Count() > 0)
         {
