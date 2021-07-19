@@ -35,23 +35,23 @@ namespace Athenathon_Webseite.Migrations
                     Duration = table.Column<int>(type: "int", nullable: false),
                     AverageSpeed = table.Column<int>(type: "int", nullable: false),
                     CaloriesBurned = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserDistances", x => x.DistanceId);
                     table.ForeignKey(
-                        name: "FK_UserDistances_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_UserDistances_Users_Id",
+                        column: x => x.Id,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserDistances_UserId",
+                name: "IX_UserDistances_Id",
                 table: "UserDistances",
-                column: "UserId");
+                column: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

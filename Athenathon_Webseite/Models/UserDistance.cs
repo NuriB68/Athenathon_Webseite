@@ -10,7 +10,7 @@ namespace Athenathon_Webseite.Models
     //Table UserDistance with the columns DistanceId, Distancem TypeOfSport, DayTime, Duration, AverageSpeed and CaloriesBurned
     public class UserDistance
     {
-        [Key]
+         [Key]
         public int DistanceId { get; set; }
         [Required]
         public double Distance { get; set; }
@@ -24,6 +24,7 @@ namespace Athenathon_Webseite.Models
         public int CaloriesBurned { get; set; }
 
         [ForeignKey("User")]
+
         public int Id { get; set; }
         public User User { get; set; }  
             

@@ -17,8 +17,9 @@ namespace Athenathon_Webseite.Data
         }
 
         //Includes tables in the DbContext
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserDistance> UserDistances { get; set; }
+         public DbSet<User> Users { get; set; }
+         public DbSet<UserDistance> UserDistances { get; set; }
+         public DbSet<Newsfeed> Newsfeeds { get; set; }
 
     }
 }

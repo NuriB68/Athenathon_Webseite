@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace Athenathon_Webseite.Models
 {
-    //Table Newsfeed with the columns Time, Title, Text and Author
     public class Newsfeed
     {
-        public Newsfeed()
-        {
-
-        }
-
+        
         [Key]
         [Required]
         public string Time { get; set; }
@@ -23,5 +18,7 @@ namespace Athenathon_Webseite.Models
         public string Text { get; set; }
         [Required]
         public string Author { get; set; }
+
     }
+
 }
