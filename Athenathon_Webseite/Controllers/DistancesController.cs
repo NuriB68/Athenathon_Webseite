@@ -35,8 +35,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Create
-        /* Fügt den neuen Nutzer der Datenbank hinzu und kehrt
-           zur Index-Ansicht zurück */
+        /* Adds new User to database and returns to Index-View */
 
         [Authorize(Roles = "Admin, Supervisor")]
 
@@ -71,8 +70,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Update
-        /* Übernehmen der Veränderungen in der Datenbank und Weiterleitung
-           zur Index-Ansicht */
+        /* Updates Changes to database and returns to Index-View */
 
         [Authorize(Roles = "Admin, Supervisor")]
 
@@ -109,8 +107,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Delete
-        /* Löschung des Nutzers mit der jeweiligen Id aus der Datenbank
-           und Weiterleitung zur Index-Ansicht */
+        /* Deletion of the User with its Id from the database and returns to Index-View */
 
 
         [Authorize(Roles = "Admin, Supervisor")]

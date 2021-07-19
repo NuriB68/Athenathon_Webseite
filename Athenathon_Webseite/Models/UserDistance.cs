@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Athenathon_Webseite.Models
 {
+    //Table UserDistance with the columns DistanceId, Distancem TypeOfSport, DayTime, Duration, AverageSpeed and CaloriesBurned
     public class UserDistance
     {
         [Key]
