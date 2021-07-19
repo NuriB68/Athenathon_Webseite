@@ -31,7 +31,7 @@ namespace Athenathon_Webseite.Controllers
 
                 return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText)  || a.Name.Contains(searchText)  ||
                 a.Roles.Contains(searchText)  || a.University.Contains(searchText)   || searchText == null ).ToList());
-            } else {  // Supervisor sieht nur User
+            } else {  // Supervisor can only see user
                 return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText) &&  a.Roles == "User" || a.Name.Contains(searchText) && a.Roles == "User" ||
                 a.Roles.Contains(searchText) && a.Roles == "User" || a.University.Contains(searchText) && a.Roles == "User" || searchText == null && a.Roles == "User").ToList());
             }
@@ -49,7 +49,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Create
-        /* Adds new User to database and reutrns to Index-View */
+        /* Adds new User to database and returns to Index-View */
 
         [Authorize(Roles = "Admin")]
 
@@ -183,7 +183,6 @@ namespace Athenathon_Webseite.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
             //    }
-            return View(obj);
         }
 
         
