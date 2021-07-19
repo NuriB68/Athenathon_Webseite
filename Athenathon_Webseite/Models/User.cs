@@ -25,8 +25,9 @@ namespace Athenathon_Webseite.Models
         public string Password { get; set; }
         [Required]
         public string Name { get; set; }
-
+        [Required]
         public string Roles { get; set; }
+        public bool Locked { get; set; }
         public List<UserDistance> UserDistances { get; set; }
 
     }
