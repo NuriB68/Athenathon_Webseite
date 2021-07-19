@@ -7,8 +7,8 @@ using Athenathon_Webseite.Data;
 
 namespace Athenathon_Webseite.Services
 {
-    public class UserService  // hier werden infos aus der datenbank gesucht, um zu schauen ob login erlaubt werden soll
-                              // funktion wird in login aufgerufen
+    public class UserService  // infos are searched from the database to see if login should be allowed
+                              // function is called in login
     {
         private readonly ApplicationDbContext _context;
 
@@ -23,7 +23,7 @@ namespace Athenathon_Webseite.Services
             claims = new List<Claim>();
             var appUser = _context.Users
                  .Where(a => a.Email == email)
-                 .Where(a => a.Roles == "Admin" || a.Roles == "Supervisor")  // nur diese rollen dürfen sich anmelden
+                 .Where(a => a.Roles == "Admin" || a.Roles == "Supervisor")  // only these roles are allowed to login
                  .Where(a => a.Password == password).FirstOrDefault();
 
             if (appUser is null)

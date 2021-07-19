@@ -21,13 +21,12 @@ namespace Athenathon_Webseite.Controllers
         }
 
 
-        /* Startseite der User page, welche die Liste der aktuellen
-         Nutzer mit ihren Details anzeigt und weitere Optionen bietet */
+        /* Startpage regarding Users, shows list of Users and their details, offers options to proceed*/
 
-        [Authorize(Roles = "Admin, Supervisor")]  // hier haben Admin und Supervisor Zugang
+        [Authorize(Roles = "Admin, Supervisor")]  // Access for Admin and Supervisor
         public IActionResult Index(string searchText)
         {
-            if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin kann jeden sehen und bearbeiten
+            if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin can see and update everyone
             {
 
                 return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText)  || a.Name.Contains(searchText)  ||
@@ -38,10 +37,10 @@ namespace Athenathon_Webseite.Controllers
             }
         }
 
-        
+
 
         // GET Create
-        /* Leitet weiter zur Ansicht der Nutzererstellung */
+        /* Redirects to the user creation view */
 
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
@@ -50,8 +49,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Create
-        /* Fügt den neuen Nutzer der Datenbank hinzu und kehrt
-           zur Index-Ansicht zurück */
+        /* Adds new User to database and reutrns to Index-View */
 
         [Authorize(Roles = "Admin")]
 
@@ -70,8 +68,8 @@ namespace Athenathon_Webseite.Controllers
 
 
         // GET Delete
-        /* Weiterleitung zur Ansicht, wo der Nutzer mit der entsprechenden
-           Id angezeigt wird und die Option des Löschens vorliegt */
+        /*  Redirection to the view where the user is displayed with the corresponding Id 
+         *  and the option of deletion is available */
 
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
@@ -89,8 +87,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Delete
-        /* Löschung des Nutzers mit der jeweiligen Id aus der Datenbank
-           und Weiterleitung zur Index-Ansicht */
+        /* Deletion of User with corresponding Id from database and returns to Index-View */
 
         [Authorize(Roles = "Admin")]
 
@@ -110,8 +107,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // GET Update
-        /* Weiterleitung zur Ansicht, wo der Nutzer mit der jeweiligen
-           Id bearbeitet werden kann */
+        /* Redirection to the view, where the User and its corresponding ID cna be updated*/
 
         [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Update(int? id)
@@ -129,8 +125,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Update
-        /* Übernehmen der Veränderungen in der Datenbank und Weiterleitung
-           zur Index-Ansicht */
+        /* Apply changes to database and return to Index-View*/
 
         [Authorize(Roles = "Admin, Supervisor")]
 
@@ -149,7 +144,7 @@ namespace Athenathon_Webseite.Controllers
             return View(obj);
         }
 
-        // Seite, in welcher man per select-funktion entweder die rolle user oder supervisor geben muss
+        // page, where using the select-function the role user or superviser is selected
 
         [Authorize(Roles = "Admin")]
         public IActionResult UpdateRole(int? id)
@@ -167,8 +162,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         // POST Update
-        // Übernehmen der Veränderungen in der Datenbank und Weiterleitung
-        //  zur Index-Ansicht 
+        // Apply changes to database and return to Index-View
 
         [Authorize(Roles = "Admin")]
 

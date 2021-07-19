@@ -33,7 +33,7 @@ namespace Athenathon_Webseite.Controllers
         }
 
         [HttpGet("denied")]
-        public IActionResult Denied()  // angezeigt wenn Zugang verboten ist
+        public IActionResult Denied()  // shown, when entrance is denied
         {
             return View();
         }
@@ -45,7 +45,7 @@ namespace Athenathon_Webseite.Controllers
             return View();
         }
 
-        [HttpPost("login")]  // hier wird durch Validate Funktion geprüft ob User existiert und sich anmeden darf, siehe UserService
+        [HttpPost("login")]  // validationfunction tests if User exists and is allowed to log in, please refer UserService
         public async Task<IActionResult> Validate(string email, string password, string returnUrl)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -54,7 +54,7 @@ namespace Athenathon_Webseite.Controllers
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToAction("Index", "Home");  // wenn man angemeldet ist wird man zur homepage geschickt
+                return RedirectToAction("Index", "Home");  // if logged in, User is send to Index-Home-View
             }
 
             else
@@ -67,7 +67,7 @@ namespace Athenathon_Webseite.Controllers
 
         }
 
-        [Authorize]  // falls man angemeldet ist kann man sich auch abmeldem
+        [Authorize]  // if logged in, logout is possible
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
