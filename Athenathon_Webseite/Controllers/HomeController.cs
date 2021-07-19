@@ -45,7 +45,7 @@ namespace Athenathon_Webseite.Controllers
             return View();
         }
 
-        [HttpPost("login")]  // validationfunction tests if User exists and is allowed to log in, please refer UserService
+        [HttpPost("login")]  // validation function tests if User exists and is allowed to log in, please refer UserService
         public async Task<IActionResult> Validate(string email, string password, string returnUrl)
         {
             ViewData["ReturnUrl"] = returnUrl;
