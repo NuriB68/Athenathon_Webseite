@@ -43,14 +43,15 @@
                 <th>
                     University
                 </th>
-                <th>
-                    Password
-                </th>
+                
                 <th>
                     Name
                 </th>
                 <th>
                     Role
+                </th>
+                <th>
+                    Locked
                 </th>
                 <th>
                     Manage
@@ -61,23 +62,27 @@
             @*Representation of all Users in the database*@
             @foreach (var user in Model)
             {
-    <tr>
-        <td width="10%">@user.Id</td>
-        <td width="30%">@user.Email</td>
-        <td width="30%">@user.University</td>
-        <td width="30%">@user.Password</td>
-        <td width="30%">@user.Name</td>
-        <td width="30%">@user.Roles</td>
-        <td width="40%">
-            <div class="w-75 btn-group" role="group">
-                <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
-                @if (User.HasClaim(ClaimTypes.Role, "Admin"))
-                {
-                    <a asp-controller="User" asp-action="UpdateRole" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update Role</a>
-                    <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>}
-                </div>
-        </td>
-    </tr>
+            <tr>
+                <td width="10%">@user.Id</td>
+                <td width="30%">@user.Email</td>
+                <td width="20%">@user.University</td>
+                <td width="30%">@user.Name</td>
+                <td width="30%">@user.Roles</td>
+                <td width="30%">@user.Locked</td>
+                <td width="40%">
+                    <div class="w-75 btn-group" role="group">
+                        
+                        @if (User.HasClaim(ClaimTypes.Role, "Admin"))
+                        {
+                            <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
+                            <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>
+                        }
+                        else {
+                            <a asp-controller="User" asp-action="Update_Lock_Status" asp-route-Id="@user.Id" class="btn btn-primary mx-1">(Un)Lock</a>
+                        }
+                    </div>
+                </td>
+            </tr>
            }
         </tbody>
     </table> }

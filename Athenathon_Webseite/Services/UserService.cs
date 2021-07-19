@@ -24,6 +24,7 @@ namespace Athenathon_Webseite.Services
             var appUser = _context.Users
                  .Where(a => a.Email == email)
                  .Where(a => a.Roles == "Admin" || a.Roles == "Supervisor")  // only these roles are allowed to login
+                 .Where(a => a.Locked == false)
                  .Where(a => a.Password == password).FirstOrDefault();
 
             if (appUser is null)
