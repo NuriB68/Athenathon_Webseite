@@ -40,6 +40,12 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Newsfeed" asp-action="Index">Newsfeed</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Logout">Logout</a>
                             </li>
                         }

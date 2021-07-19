@@ -8,20 +8,14 @@
         </div>
 
         <div class="col-6 text-right">
-            @if (User.HasClaim(ClaimTypes.Role, "Admin"))
-            {
                 <a asp-controller="Newsfeed" asp-action="Create" class="btn btn-primary">Add new News</a>
-            }
         </div>
         <div class="col-3">
             @using (Html.BeginForm("Index", "Newsfeed", FormMethod.Get))
             {
                 @Html.TextBox("searchText")<input type="submit" value="Search" />}
         </div>
-        @if (User.HasClaim(ClaimTypes.Role, "Admin; Supervisor"))
-        {
             <p class="text-primary">You can search after Title, Time and Author</p> 
-        }
     </div>
 
         <br />
@@ -31,10 +25,10 @@
         <thead>
             <tr>
                 <th>
-                    Title
+                    Time
                 </th>
                 <th>
-                    Time
+                    Title
                 </th>
                 <th>
                     Text
@@ -53,10 +47,7 @@
         <td width="40%">
             <div class="w-75 btn-group" role="group">
                 <a asp-controller="Newsfeed" asp-action="Update" asp-route-Id="@news.Title" class="btn btn-primary mx-1">Update</a>
-                @if (User.HasClaim(ClaimTypes.Role, "Admin; Supervisor"))
-                {
-                    <a asp-controller="Newsfeed" asp-action="UpdateRole" asp-route-Id="@news.Title" class="btn btn-primary mx-1">Update Role</a>
-                    <a asp-controller="Newsfeed" asp-action="Delete" asp-route-Id="@news.Title" class="btn btn-danger mx-1">Delete</a>}
+                <a asp-controller="Newsfeed" asp-action="Delete" asp-route-Id="@news.Title" class="btn btn-danger mx-1">Delete</a>
                 </div>
         </td>
     </tr>
