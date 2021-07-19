@@ -18,6 +18,28 @@ namespace Athenathon_Webseite.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Athenathon_Webseite.Models.Newsfeed", b =>
+                {
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Time");
+
+                    b.ToTable("Newsfeeds");
+                });
+
             modelBuilder.Entity("Athenathon_Webseite.Models.User", b =>
                 {
                     b.Property<int>("Id")
