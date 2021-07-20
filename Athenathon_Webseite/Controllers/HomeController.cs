@@ -27,6 +27,11 @@ namespace Athenathon_Webseite.Controllers
             _userService = userService;
         }
 
+        public ActionResult Dashboard()
+        {
+
+            return View();
+        }
         public IActionResult Index()
         {
             return View();

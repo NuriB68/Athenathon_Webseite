@@ -57,19 +57,17 @@ namespace Athenathon_Webseite.Controllers
         // GET Update
         /* Redirection to the view, where the User and its corresponding ID cna be updated*/
 
-        public IActionResult Update(int? NewsID)
+        public IActionResult Update(int NewsID)
         {
 
-            if (NewsID == null )
-            {
-                return NotFound();
-            }
+
             var obj = _db.Newsfeeds.Find(NewsID);
             if (obj == null)
             {
                 return NotFound();
             }
-            return View(obj);
+            else 
+                return View(obj);
         }
 
 
@@ -119,7 +117,7 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? NewsId)
+        public IActionResult DeletePost(int NewsId)
         {
             var obj = _db.UserDistances.Find(NewsId);
             if (obj == null)
