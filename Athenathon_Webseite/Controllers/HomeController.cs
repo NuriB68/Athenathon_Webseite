@@ -52,16 +52,16 @@ namespace Athenathon_Webseite.Controllers
             if (_userService.TryValidateUser(email, password, out List<Claim> claims))
             {
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity); // new ClaimsPrincipal and Identity added to User
                 await HttpContext.SignInAsync(claimsPrincipal);
                 return RedirectToAction("Index", "Home");  // if logged in, User is send to Index-Home-View
             }
 
-            else
+            else  // shows error, if wrong data is typed or access is denied
             {
                 TempData["Error"] = "Error. Username or Password is invalid or your access is denied. " +
                     "If you are a regular User please use the App for personal Data";
-                return View("login");
+                return View("login"); 
             }
 
 

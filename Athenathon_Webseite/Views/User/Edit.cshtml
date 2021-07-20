@@ -1,6 +1,6 @@
 ﻿@model Athenathon_Webseite.Models.User
 
-<form method="post" asp-action="Update_Lock_Status">
+<form method="post" asp-action="Edit">
     <input asp-for="Id" hidden />
     <div class="border p-3">
         <div class="form-group row">
@@ -22,7 +22,7 @@
                 <div class="form-group row">
                     <div class="col-8 offset-2 row">
                         <div class="col">
-                            <input type="submit" class="btn btn-info w-75" value="Update_Lock_Status" />
+                            <input type="submit" class="btn btn-info w-75" value="Edit" />
                         </div>
                         <div class="col">
                             <a asp-action="Index" class="btn btn-danger w-75">Back</a>

@@ -24,14 +24,16 @@ namespace Athenathon_Webseite.Controllers
         /* Startpage regarding Users, shows list of Users and their details, offers options to proceed*/
 
         [Authorize(Roles = "Admin, Supervisor")]  // Access for Admin and Supervisor
+
+        // page, where all Users are listed in a table with buttons for update, create and delete
         public IActionResult Index(string searchText)
         {
-            if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin can see, update and search for everyone
+            if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin can see, update, delete everyone and can search for everyone
             {
 
                 return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText)  || a.Name.Contains(searchText)  ||
                 a.Roles.Contains(searchText)  || a.University.Contains(searchText) || searchText == null ).ToList());
-            } else {  // Supervisor can only see user and search for user
+            } else {  // Supervisor can only see user, search for user or lock/ unlock the user
                 return View(_db.Users.Where(a => a.Id.ToString().Contains(searchText) &&  a.Roles == "User" || a.Name.Contains(searchText) && a.Roles == "User" ||
                 a.Roles.Contains(searchText) && a.Roles == "User" || a.University.Contains(searchText) && a.Roles == "User" || searchText == null && a.Roles == "User").ToList());
             }
@@ -184,10 +186,10 @@ namespace Athenathon_Webseite.Controllers
             return View(obj);
         }
 
-        // page, where Supervisor can lock User
+        // page, where Supervisor can lock or unlock user
 
         [Authorize(Roles = "Supervisor, Admin")]
-        public IActionResult Update_Lock_Status(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
             {
@@ -208,7 +210,7 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update_Lock_Status(User obj)
+        public IActionResult Edit(User obj)
         {
 
             //if (ModelState.IsValid)
