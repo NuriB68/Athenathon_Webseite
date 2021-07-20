@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 //in Arbeit!
 namespace Athenathon_Webseite.Controllers
 {
@@ -20,24 +19,25 @@ namespace Athenathon_Webseite.Controllers
             _db = db;
         }
       
+        // Implementation of searchoption
         public IActionResult Index(string searchText)
         {
-            return View(_db.Newsfeeds.Where(a => a.Time.Contains(searchText) || a.Title.Contains(searchText)    || a.Author.Contains(searchText) || searchText == null).ToList()); 
+            return View(_db.Newsfeeds.Where(a => a.Time.Contains(searchText) || a.Title.Contains(searchText)  || a.Author.Contains(searchText) || searchText == null).ToList()); 
         }
 
-        
+
+        // GET Create
+        /* Redirects to the user creation view */
+
+ 
         public IActionResult Create()
         {
-            List<Newsfeed> cl = new List<Newsfeed>();
-            cl = (from c in _db.Newsfeeds select c).ToList();
-            ViewBag.message = cl;
-
             return View();
         }
 
+
         // POST Create
         /* Adds new User to database and returns to Index-View */
-
 
 
         [HttpPost]
@@ -53,20 +53,25 @@ namespace Athenathon_Webseite.Controllers
             return View(obj);
         }
 
-        public IActionResult Update(int? Time)
+
+        // GET Update
+        /* Redirection to the view, where the User and its corresponding ID cna be updated*/
+
+        public IActionResult Update(int? NewsID)
         {
 
-            if (Time == null )
+            if (NewsID == null )
             {
                 return NotFound();
             }
-            var obj = _db.Newsfeeds.Find(Time);
+            var obj = _db.Newsfeeds.Find(NewsID);
             if (obj == null)
             {
                 return NotFound();
             }
             return View(obj);
         }
+
 
         // POST Update
         /* Updates Changes to database and returns to Index-View */
@@ -82,7 +87,7 @@ namespace Athenathon_Webseite.Controllers
                 {
 
                     _db.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                    _db.Entry(obj).Property("Time").IsModified = false;
+                    _db.Entry(obj).Property("NewsId").IsModified = false;
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -90,13 +95,16 @@ namespace Athenathon_Webseite.Controllers
             }
         }
 
-        public IActionResult Delete(int? Time)
+        // GET Delete
+        /*  Redirection to the view where the user is displayed with the corresponding Id 
+         *  and the option of deletion is available */
+        public IActionResult Delete(int? NewsId)
         {
-            if (Time == null )
+            if (NewsId == null )
             {
                 return NotFound();
             }
-            var obj = _db.Newsfeeds.Find(Time);
+            var obj = _db.Newsfeeds.Find(NewsId);
             if (obj == null)
             {
                 return NotFound();
@@ -111,9 +119,9 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? Time)
+        public IActionResult DeletePost(int? NewsId)
         {
-            var obj = _db.UserDistances.Find(Time);
+            var obj = _db.UserDistances.Find(NewsId);
             if (obj == null)
             {
                 return NotFound();

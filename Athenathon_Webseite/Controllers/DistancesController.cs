@@ -18,11 +18,16 @@ namespace Athenathon_Webseite.Controllers
             _db = db;
         }
       
+        // Implementation of Searchoption
         public IActionResult Index(string searchText)
         {
             return View(_db.UserDistances.Where(a => a.Id.ToString().Contains(searchText) && a.User.Roles != "Admin" || a.TypeOfSport.Contains(searchText) && a.User.Roles != "Admin"
              || a.User.Name.Contains(searchText) || searchText == null && a.User.Roles != "Admin").ToList()); 
         }
+
+
+        // GET Create
+        /* Redirects to the user creation view */
 
         [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Create()

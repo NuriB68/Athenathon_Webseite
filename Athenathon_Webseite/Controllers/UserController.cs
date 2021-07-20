@@ -22,7 +22,7 @@ namespace Athenathon_Webseite.Controllers
 
 
         /* Startpage regarding Users, shows list of Users and their details, offers options to proceed*/
-
+        // Implementation of searchoption
         [Authorize(Roles = "Admin, Supervisor")]  // Access for Admin and Supervisor
         public IActionResult Index(string searchText)
         {
