@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-//in Arbeit!
+
 namespace Athenathon_Webseite.Controllers
 {
     public class NewsfeedController : Controller
