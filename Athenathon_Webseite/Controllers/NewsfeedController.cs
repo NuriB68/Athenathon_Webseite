@@ -56,18 +56,22 @@ namespace Athenathon_Webseite.Controllers
 
         // GET Update
         /* Redirection to the view, where the User and its corresponding ID cna be updated*/
+        [Authorize(Roles = "Admin")]
 
-        public IActionResult Update(int NewsID)
+        public IActionResult Update(int? id)
         {
+            if (id == null || id <= 0)
+            {
+                return NotFound();
+            }
 
-
-            var obj = _db.Newsfeeds.Find(NewsID);
+            var obj = _db.Newsfeeds.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
-            else 
-                return View(obj);
+            
+            return View(obj);
         }
 
 
@@ -96,17 +100,19 @@ namespace Athenathon_Webseite.Controllers
         // GET Delete
         /*  Redirection to the view where the user is displayed with the corresponding Id 
          *  and the option of deletion is available */
-        public IActionResult Delete(int? NewsId)
+        public IActionResult Delete(int? id)
         {
-            if (NewsId == null )
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }
-            var obj = _db.Newsfeeds.Find(NewsId);
+
+            var obj = _db.Newsfeeds.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
+
             return View(obj);
         }
 
@@ -117,14 +123,20 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int NewsId)
+        public IActionResult DeletePost(int? newsid)
         {
-            var obj = _db.UserDistances.Find(NewsId);
+            if (newsid == null || newsid <= 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Newsfeeds.Find(newsid);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.UserDistances.Remove(obj);
+
+            _db.Newsfeeds.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -20,8 +20,10 @@ namespace Athenathon_Webseite.Migrations
 
             modelBuilder.Entity("Athenathon_Webseite.Models.Newsfeed", b =>
                 {
-                    b.Property<string>("Time")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("NewsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Author")
                         .IsRequired()
@@ -31,11 +33,15 @@ namespace Athenathon_Webseite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Time");
+                    b.HasKey("NewsId");
 
                     b.ToTable("Newsfeeds");
                 });

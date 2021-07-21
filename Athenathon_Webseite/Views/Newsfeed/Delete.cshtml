@@ -1,6 +1,7 @@
 ﻿@model Athenathon_Webseite.Models.Newsfeed
 
 <form method="post" asp-action="DeletePost">
+    <input asp-for="NewsId" hidden />
     <div class="border p-3">
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Delete News</h2>
@@ -8,30 +9,30 @@
         <div class="row">
             <div class="col-12">
                 <div class="form-group row">
-                    <div class="col-4">
+                    <div class="col-3">
                         Date
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Title
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Text
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         Author
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <input asp-for="Time" disabled class="form-control" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input asp-for="Title" disabled class="form-control" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input asp-for="Text" disabled class="form-control" />
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input asp-for="Author" disabled class="form-control" />
                     </div>
                 </div>

@@ -114,7 +114,7 @@ namespace Athenathon_Webseite.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Update(int? id)
         {
-            if (id == null || id == 0)
+            if (id == null || id <= 0)
             {
                 return NotFound();
             }

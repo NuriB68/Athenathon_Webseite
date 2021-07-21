@@ -22,8 +22,15 @@ namespace Athenathon_Webseite.Controllers
         public IActionResult Index(string searchText)  // all users distances (not Admin's) are listed with their UserID
                                                        // you can search for specific distances
         {
-            return View(_db.UserDistances.Where(a => a.Id.ToString().Contains(searchText) && a.User.Roles != "Admin" || a.TypeOfSport.Contains(searchText) && a.User.Roles != "Admin"
-             || a.User.Name.Contains(searchText) || searchText == null && a.User.Roles != "Admin").ToList()); 
+            return View(_db.UserDistances.Where(
+                a => a.Id.ToString().Contains(searchText) 
+                && a.User.Roles != "Admin" 
+                || a.TypeOfSport.Contains(searchText) 
+                && a.User.Roles != "Admin"
+                || a.User.Name.Contains(searchText) 
+                || searchText == null 
+                && a.User.Roles != "Admin").ToList()
+            ); 
         }
 
 
