@@ -20,7 +20,7 @@ namespace Athenathon_Webseite.Models
         [RegularExpression(@"^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", ErrorMessage = "Format must be hh:mm")]
         public string DayTime { get; set; }
         [Required]
-        public int Duration { get; set; }
+        public double Duration { get; set; }
         public double AverageSpeed { get; set; }
         public int CaloriesBurned { get; set; }
 
