@@ -8,8 +8,9 @@ namespace Athenathon_Webseite.Models
 {
     public class Newsfeed
     {
-        
+
         [Key]
+        public int NewsId { get; set; }
         [Required]
         public string Time { get; set; }
         [Required]
@@ -18,7 +19,11 @@ namespace Athenathon_Webseite.Models
         public string Text { get; set; }
         [Required]
         public string Author { get; set; }
-
+        public Newsfeed()
+        {
+       
+        }
     }
+
 
 }
