@@ -59,13 +59,57 @@
 
             <body>
                 <!--Div that will hold the pie chart-->
-                <div id="piechart" style="width: 600px; height: 500px" ;></div>
+                <div id="piechart" style="width: 600px; height: 250px" ;></div>
             </body>
             </html>
         </div>
 
-        <div class="col-6">
+         <div class="col-6">
+             <html>
+             <head>
+                 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                 <script type="text/javascript">
+                     google.charts.load('current', { 'packages': ['bar'] });
+                     google.charts.setOnLoadCallback(drawStuff);
 
-        </div>
+                     function drawStuff() {
+                         var data = new google.visualization.arrayToDataTable([
+                             ['Distance in km', 'Distance'], 
+                             ['Until now', 8000],
+                             ['Goal', 11000],
+
+                         ]);
+
+                         var options = {
+                             width: 800,
+                             chart: {
+                                 title: 'Distance achieved',
+
+                             },
+                             bars: 'horizontal', 
+                             series: {
+                                 0: { axis: 'Distance' }, // Bind series 0 to an axis named 'Distance'.
+                             },
+                             axes: {
+                                 x: {
+                                     distance: { label: 'km' }, // Bottom x-axis.
+                                 }
+                             }
+                         };
+
+                         var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+                         chart.draw(data, options);
+                     };
+                 </script>
+             </head>
+             <body>
+                 <div id="dual_x_div" style="width: 900px; height: 250px;"></div>
+             </body>
+         </html>
+         </div>
+    </div>
+    <div class="row-4">
+        <h2 class="display-10"> This is the Newsfeed!</h2>
+
     </div>
 </div>
