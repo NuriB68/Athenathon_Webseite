@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Dashboard Page";
 }
 
 <style>
@@ -10,138 +10,131 @@
     }
 </style>
 
-<div class="text-center">
-    <h1 class="display-10"> This is the Dashboard!</h1>
-</div>
+<html>
+<head>
+    <!--Load the AJAX API-->
 
-<div class="container" p-3>
-    <div class="row pt-4">
-        <div class="col-6">
-            <html>
-            <head>
-                <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
 
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
+        // PieChartTypeOfSports
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
 
-                    // Load the Visualization API and the corechart package.
-                    google.charts.load('current', { 'packages': ['corechart'] });
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
 
-                    // Set a callback to run when the Google Visualization API is loaded.
-                    google.charts.setOnLoadCallback(drawChart);
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
 
-                    // Callback that creates and populates a data table,
-                    // instantiates the pie chart, passes in the data and
-                    // draws it.
-                    function drawChart() {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'TypeOfSport');
+            data.addColumn('number', 'Count');
+            data.addRows([
+                ['Jogging', 3],
+                ['Swimming', 1],
+                ['Riding', 1],
+                ['Hiking', 1],
+                ['Paddling', 2],
+                ['else', 2]
+            ]);
 
-                        // Create the data table.
-                        var data = new google.visualization.DataTable();
-                        data.addColumn('string', 'TypeOfSport');
-                        data.addColumn('number', 'Count');
-                        data.addRows([
-                            ['Jogging', 3],
-                            ['Swimming', 1],
-                            ['Riding', 1],
-                            ['Hiking', 1],
-                            ['Paddling', 2],
-                            ['else', 2]
-                        ]);
+            // Set chart options
+            var options = { 'title': 'Types of Sport' };
 
-                        // Set chart options
-                        var options = { 'title': 'Types of Sport' };
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+        // ProgressBarChart Distance
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['bar'] });
 
-                        // Instantiate and draw our chart, passing in some options.
-                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                        chart.draw(data, options);
-                    }
-                </script>
-            </head>
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawDistanceBar);
 
-            <body>
-                <!--Div that will hold the pie chart-->
-                <div id="piechart" style="width: 600px; height: 250px" ;></div>
-            </body>
-        </html>
-    </div>
+        // Callback that creates and populates a data table,
+        // instantiates the bar chart, passes in the data and
+        // draws it.
+        function drawDistanceBar() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Distance in km', 'Distance'],
+                ['Until now', 8000],
+                ['Goal', 11000],
+             ]);
 
-    <div class="col-6">
-        <html>
-        <head>
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-                google.charts.load('current', { 'packages': ['bar'] });
-                google.charts.setOnLoadCallback(drawStuff);
-
-                function drawStuff() {
-                    var data = new google.visualization.arrayToDataTable([
-                        ['Distance in km', 'Distance'],
-                        ['Until now', 8000],
-                        ['Goal', 11000],
-
-                    ]);
-
-                    var options = {
-                        width: 800,
-                        chart: {
-                            title: 'Distance achieved',
-
-                        },
-                        bars: 'horizontal',
-                        series: {
-                            0: { axis: 'Distance' }, // Bind series 0 to an axis named 'Distance'.
-                        },
-                        axes: {
-                            x: {
-                                distance: { label: 'km' }, // Bottom x-axis.
-                            }
-                        }
-                    };
-
-                    var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
-                    chart.draw(data, options);
-                };
-            </script>
-        </head>
-        <body>
-            <div id="dual_x_div" style="width: 900px; height: 250px;"></div>
-        </body>
-    </html>
-</div>
-</div>
-
-    <div class="row-4">
-        <h2 class="display-10"> This is the Newsfeed!</h2>
-        <html>
-        <head>
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-                google.charts.load('current', { 'packages': ['table'] });
-                google.charts.setOnLoadCallback(drawTable);
-
-                function drawTable() {
-                    var data = new google.visualization.DataTable();
-                    data.addColumn('string', 'Date');
-                    data.addColumn('string', 'Title');
-                    data.addColumn('string', 'Text');
-                    data.addColumn('string', 'Author');
-                    data.addRows([
-                        ['22.07.2021', 'Latest News', 'We made a breakthrough and now it atleast looks good. Even if it is not functional yet.', 'Anne'],
-                        ['21.07.2021', 'Second News', 'Things are getting complicated and the motivation is dropping.', 'Anne'],
-                        ['20.07.2021', 'First News', 'This is the first News. Soon there will be more information on the project.', 'Anne'],
-                    ]);
-
-                    var table = new google.visualization.Table(document.getElementById('table_div'));
-
-                    table.draw(data, { showRowNumber: false, width: '100%', height: '100%' });
+            // Set chart options
+            var options = {
+                width: 800,
+                chart: {title: 'Distance achieved'},
+                bars: 'horizontal',
+                series: {
+                0: { axis: 'Distance' }, // Bind series 0 to an axis named 'Distance'.
+                },
+                axes: {
+                    x: { distance: { label: 'km' } } // Bottom x-axis.
                 }
-            </script>
-        </head>
-        <body>
-            <div id="table_div"></div>
-        </body>
-    </html>
-</div>
+            };
 
-</div>
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
+            chart.draw(data, options);
+        };
 
+        // NewsfeedTable
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['table'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawNewsTable);
+
+        // Callback that creates and populates a data table,
+        // instantiates the table, passes in the data and
+        // draws it.
+        function drawNewsTable() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Date');
+            data.addColumn('string', 'Title');
+            data.addColumn('string', 'Text');
+            data.addColumn('string', 'Author');
+            data.addRows([
+                ['22.07.2021', 'Latest News', 'We made a breakthrough and now it atleast looks good. Even if it is not functional yet.', 'Anne'],
+                ['21.07.2021', 'Second News', 'Things are getting complicated and the motivation is dropping.', 'Anne'],
+                ['20.07.2021', 'First News', 'This is the first News. Soon there will be more information on the project.', 'Anne'],
+            ]);
+
+            // Instantiate and draw the table, passing in some options.
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(data, { showRowNumber: false, width: '100%', height: '100%' });
+        }
+
+        
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="display-10"> This is the Dashboard!</h1>
+        </div>
+
+        <div class="row mb-5 align-items-center">
+            <div class="col-lg-6">
+                <div id="piechart" style="width: 100%; height: 100%"></div>
+            </div>
+            <div class="col-lg-6">
+                <div id="dual_x_div" style="width:80%; height: 100%"></div>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class=" col-lg-12">
+                <div id="table_div"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
