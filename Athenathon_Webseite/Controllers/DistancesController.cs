@@ -2,15 +2,13 @@
 using Athenathon_Webseite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace Athenathon_Webseite.Controllers
 {
-    public class DistancesController : Controller  // Conroller for the Distances page, where you can see, add, ipdate and delete distances
+    public class DistancesController : Controller  // Conroller for the Distances page, where you can see, add, update and delete distances
                                                    // all functions are accessable for admin and supervisor
     {
         private readonly ApplicationDbContext _db;
@@ -65,7 +63,8 @@ namespace Athenathon_Webseite.Controllers
             return View(obj);
         }
 
-
+        // GET Update
+        /* Redirection to the view, where the Distance and its corresponding ID can be updated*/
         [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Update(int? id)  // page, where you can update or edit distances
         {
@@ -104,6 +103,9 @@ namespace Athenathon_Webseite.Controllers
             }
         }
 
+        // GET Delete
+        /*  Redirection to the view where the Distance is displayed with the corresponding Id 
+         *  and the option of deletion is available */
         [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Delete(int? id)  // page, where you can delete distance entries
         {

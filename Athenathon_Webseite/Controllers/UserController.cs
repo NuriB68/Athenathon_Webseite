@@ -2,12 +2,9 @@
 using Athenathon_Webseite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using Athenathon_Webseite.Services;
+
 
 namespace Athenathon_Webseite.Controllers
 {
@@ -21,11 +18,11 @@ namespace Athenathon_Webseite.Controllers
         }
 
 
-        /* Startpage regarding Users, shows list of Users and their details, offers options to proceed*/
+        /* Startpage regarding Users, which shows list of Users and their details, offers options to proceed*/
         // Implementation of searchoption
         [Authorize(Roles = "Admin, Supervisor")]  // Access for Admin and Supervisor
 
-        // page, where all Users are listed in a table with buttons for update, create and delete
+        // page, where all Users are listed in a table with buttons for creat, update, and delete
         public IActionResult Index(string searchText)
         {
             if (User.HasClaim(ClaimTypes.Role, "Admin")) // Admin can see, update, delete everyone and can search for everyone
@@ -135,14 +132,10 @@ namespace Athenathon_Webseite.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(User obj)
         {
-            //if (ModelState.IsValid)
-           // {
-
                 _db.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                //_db.Entry(obj).Property("Roles").IsModified = false;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-          //  }
+
          }
 
         // page, where using the select-function the role user or superviser is selected
@@ -211,9 +204,6 @@ namespace Athenathon_Webseite.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(User obj)
         {
-
-            //if (ModelState.IsValid)
-           // {
                 _db.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 _db.Entry(obj).Property("Email").IsModified = false;
                 _db.Entry(obj).Property("University").IsModified = false;
@@ -222,8 +212,6 @@ namespace Athenathon_Webseite.Controllers
                 _db.Entry(obj).Property("Roles").IsModified = false;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-           // }
-           // return View(obj);
         }
 
     }

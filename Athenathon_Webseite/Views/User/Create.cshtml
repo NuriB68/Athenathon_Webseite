@@ -8,6 +8,7 @@
         </div>
         <div class="row">
             <div class="col-12">
+                <!--Naming and Spacing of the tables columns.-->
                 <div class="form-group row">
                     <div class="col-3">
                         Email
@@ -28,6 +29,7 @@
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="col-3">
+                        <!--Select function used to get intended input.(University affiliation)-->
                         <select asp-for="University" class="form-control">
                             <option selected disabled>Select University</option>
                             <option>Crete</option>
@@ -48,10 +50,10 @@
                     </div>
                 </div>
 
-            <div class="form-group row">
-                <div class="col-3">
-                    Role
-                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        Role
+                    </div>
                 </div>
                 <div class="form-group row">
 
@@ -65,8 +67,7 @@
 
                     </div>
                 </div>
-            
-
+                <!--Design of Buttons-->
                 <div class="form-group row">
                     <div class="col-8 offset-2 row">
                         <div class="col">
@@ -79,7 +80,7 @@
                 </div>
 
             </div>
-            </div>
+        </div>
     </div>
 </form>
 @section Scripts{

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace Athenathon_Webseite.Models
 {
+    //Model of the Newsfeed, including NewsId, Time (later called Date on the actual Website), Title, Text and Author
+    //as columns of a table.
     public class Newsfeed
     {
 

@@ -10,10 +10,11 @@
             <a asp-controller="Distances" asp-action="Create" class="btn btn-primary">New Distance-Entry</a>
         </div>
         <div class="col-3">
+            <!--Implementation of Search option-->
             @using (Html.BeginForm("Index", "Distances", FormMethod.Get))
             {
-                @Html.TextBox("searchText")<input type="submit" value="Search" />            }
-           
+                @Html.TextBox("searchText")<input type="submit" value="Search" />}
+
         </div>
         <p class="text-primary">You can search after User-ID, User-Name and Sport Type</p>
     </div>
@@ -66,13 +67,12 @@
                     <td width="20%">@userDistance.AverageSpeed km/h</td>
                     <td width="20%">@userDistance.CaloriesBurned kcal</td>
 
+                    <!--Design of Buttons-->
                     <td width="40%">
                         <div class="w-75 btn-group" role="group">
                             <a asp-controller="Distances" asp-action="Update" asp-route-Id="@userDistance.DistanceId" class="btn btn-primary mx-1">Update</a>
-
                             <a asp-controller="Distances" asp-action="Delete" asp-route-Id="@userDistance.DistanceId" class="btn btn-danger mx-1">Delete</a>
                         </div>
-
                     </td>
                 </tr>
                 }

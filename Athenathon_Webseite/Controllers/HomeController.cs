@@ -5,12 +5,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+
 
 namespace Athenathon_Webseite.Controllers
 {
@@ -62,7 +61,7 @@ namespace Athenathon_Webseite.Controllers
                 return RedirectToAction("Index", "Home");  // if logged in, User is send to Index-Home-View
             }
 
-            else  // shows error, if wrong data is typed or access is denied
+            else  // shows error, if wrong data is put in or access is denied
             {
                 TempData["Error"] = "Error. Username or Password is invalid or your access is denied. " +
                     "If you are a regular User please use the App for personal Data";

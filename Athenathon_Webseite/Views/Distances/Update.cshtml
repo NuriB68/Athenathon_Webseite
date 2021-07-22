@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="form-group row">
-
+                    <!--Naming and Spacing of the tables columns.-->
                     <div class="col-3">
                         Distance [Km]
                     </div>
@@ -26,8 +26,9 @@
                 <div class="form-group row">
 
                     <div class="col-3">
-                            <input asp-for="Distance" class="form-control"/>
+                        <input asp-for="Distance" class="form-control" />
                     </div>
+                    <!--Select used to manage amount of different entries in TypeOfSports.-->
                     <div class="col-3">
                         <select asp-for="TypeOfSport" class="form-control">
                             <option selected disabled>Select Type of Sport</option>
@@ -47,7 +48,7 @@
                 </div>
 
                 <div class="form-group row">
-                   
+                    <!--Naming and Spacing of the tables columns.-->
                     <div class="col-3">
                         Average Speed [Km/h]
                     </div>
@@ -56,7 +57,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    
+
                     <div class="col-3">
                         <input asp-for="AverageSpeed" class="form-control" />
                     </div>
@@ -64,7 +65,7 @@
                         <input asp-for="CaloriesBurned" class="form-control" />
                     </div>
                 </div>
-
+                <!--Design of Buttons-->
                 <div class="form-group row">
                     <div class="col-8 offset-2 row">
                         <div class="col">

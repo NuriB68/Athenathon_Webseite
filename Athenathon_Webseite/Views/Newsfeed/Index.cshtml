@@ -11,6 +11,7 @@
                 <a asp-controller="Newsfeed" asp-action="Create" class="btn btn-primary">Add new News</a>
         </div>
         <div class="col-3">
+            <!--Implementation of Search option-->
             @using (Html.BeginForm("Index", "Newsfeed", FormMethod.Get))
             {
                 @Html.TextBox("searchText")<input type="submit" value="Search" />}
@@ -48,6 +49,8 @@
                 <td width="40%">@news.Text</td>
                 <td width="30%">@news.Author</td>
                 <td width="40%">
+
+                    <!--Design of Buttons-->
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Newsfeed" asp-action="Update" asp-route-Id="@news.NewsId" class="btn btn-primary mx-1">Update</a>
                         <a asp-controller="Newsfeed" asp-action="Delete" asp-route-Id="@news.NewsId" class="btn btn-danger mx-1">Delete</a>

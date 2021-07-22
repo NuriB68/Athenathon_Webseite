@@ -1,5 +1,6 @@
 using System;
 
+
 namespace Athenathon_Webseite.Models
 {
     public class ErrorViewModel

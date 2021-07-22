@@ -2,11 +2,7 @@
 using Athenathon_Webseite.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace Athenathon_Webseite.Controllers
@@ -55,7 +51,7 @@ namespace Athenathon_Webseite.Controllers
 
 
         // GET Update
-        /* Redirection to the view, where the User and its corresponding ID cna be updated*/
+        /* Redirection to the view, where the User and its corresponding ID can be updated*/
         [Authorize(Roles = "Admin")]
 
         public IActionResult Update(int? id)

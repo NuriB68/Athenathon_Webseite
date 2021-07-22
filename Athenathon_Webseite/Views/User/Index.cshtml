@@ -6,13 +6,14 @@
         <div class="col-6">
             <h2 class="text-primary">User list</h2>
         </div>
-
+        <!--Design of Button-->
         <div class="col-6 text-right">
             @if (User.HasClaim(ClaimTypes.Role, "Admin"))
             {
                 <a asp-controller="User" asp-action="Create" class="btn btn-primary">Add new User</a>
             }
         </div>
+        <!--Implementation of Search option-->
         <div class="col-3">
             @using (Html.BeginForm("Index", "User", FormMethod.Get))
             {
@@ -20,11 +21,11 @@
         </div>
         @if (User.HasClaim(ClaimTypes.Role, "Admin"))
         {
-            <p class="text-primary">You can search after User-ID, User-Name, University and Role</p> 
+            <p class="text-primary">You can search for User-ID, User-Name, University and Role</p>
         }
         else
         {
-            <p class="text-primary">You can search after User-ID, User-Name and University</p>
+            <p class="text-primary">You can search for User-ID, User-Name and University</p>
         }
     </div>
 
@@ -71,13 +72,14 @@
                 <td width="30%">@user.Locked</td>
                 <td width="40%">
                     <div class="w-75 btn-group" role="group">
-                        
+                        <!--Design of Buttons-->
                         @if (User.HasClaim(ClaimTypes.Role, "Admin"))
                         {
                             <a asp-controller="User" asp-action="Update" asp-route-Id="@user.Id" class="btn btn-primary mx-1">Update</a>
                             <a asp-controller="User" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-danger mx-1">Delete</a>
                         }
-                        else {
+                        else
+                        {
                             <a asp-controller="User" asp-action="Edit" asp-route-Id="@user.Id" class="btn btn-primary mx-1">(Un)Lock</a>
                         }
                     </div>
