@@ -143,8 +143,7 @@ namespace Athenathon_Webseite.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
           //  }
-            return View(obj);
-        }
+         }
 
         // page, where using the select-function the role user or superviser is selected
 

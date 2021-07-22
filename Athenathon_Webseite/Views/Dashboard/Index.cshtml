@@ -32,14 +32,12 @@
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'TypeOfSport');
-            data.addColumn('number', 'Count');
+            data.addColumn('number', 'Kilometers');
             data.addRows([
-                ['Jogging', 3],
-                ['Swimming', 1],
-                ['Riding', 1],
-                ['Hiking', 1],
-                ['Paddling', 2],
-                ['else', 2]
+                ['Running', 3333],
+                ['Swimming', 1496],
+                ['Cycling', 1807],
+                ['else', 2364]
             ]);
 
             // Set chart options
@@ -62,7 +60,7 @@
         function drawDistanceBar() {
             var data = new google.visualization.arrayToDataTable([
                 ['Distance in km', 'Distance'],
-                ['Until now', 8000],
+                ['Until now', 9200],
                 ['Goal', 11000],
              ]);
 
@@ -72,7 +70,7 @@
                 chart: {title: 'Distance achieved'},
                 bars: 'horizontal',
                 series: {
-                0: { axis: 'Distance' }, // Bind series 0 to an axis named 'Distance'.
+                0: { axis: 'Test' }, // Bind series 0 to an axis named 'Distance'.
                 },
                 axes: {
                     x: { distance: { label: 'km' } } // Bottom x-axis.
@@ -101,9 +99,9 @@
             data.addColumn('string', 'Text');
             data.addColumn('string', 'Author');
             data.addRows([
-                ['22.07.2021', 'Latest News', 'We made a breakthrough and now it atleast looks good. Even if it is not functional yet.', 'Anne'],
-                ['21.07.2021', 'Second News', 'Things are getting complicated and the motivation is dropping.', 'Anne'],
-                ['20.07.2021', 'First News', 'This is the first News. Soon there will be more information on the project.', 'Anne'],
+                ['02.05.2021', 'The FINAL Sprint!', 'We are a week away from the finish line with 2000km more to reach our goal. Now is the time to get your friends to join and make an event out of your runs. You can post selfies under #ATHENATON #Move4ATHENA.', 'Beyza'],
+                ['24.04.20211', 'Progress', 'We are at the halftime mark timewise and we are increadibly impressed with this community. We have already hit 6000km.', 'Anne'],
+                ['08.03.2021', 'ATHENATON', '	The seven Universities of the ATHENA European University are proud to launch the Europe Day ATHENATHON, a sporting event destined to reach a distance of 11,000 km. Within a month, from 9 April until 9 May, we invite the students and staff of each university, and every person who wants to participate, to join our event and reach our 11 000 km goal, which represents the distance that connects the seven campuses of our alliance.', 'Anne'],
             ]);
 
             // Instantiate and draw the table, passing in some options.
