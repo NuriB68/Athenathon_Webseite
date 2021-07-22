@@ -60,11 +60,11 @@
                 <tr>
                     <td width="5%">@userDistance.DistanceId</td>
                     <td width="5%">@userDistance.Id</td>
-                    <td width="20%">@userDistance.Distance km</td>
+                    <td width="20%">@userDistance.Distance.ToString("0.00") km</td>
                     <td width="20%">@userDistance.TypeOfSport</td>
                     <td width="20%">@userDistance.DayTime</td>
-                    <td width="20%">@userDistance.Duration minutes</td>
-                    <td width="20%">@userDistance.AverageSpeed km/h</td>
+                    <td width="20%">@userDistance.Duration h</td>
+                    <td width="20%">@userDistance.AverageSpeed.ToString("0.0") km/h</td>
                     <td width="20%">@userDistance.CaloriesBurned kcal</td>
 
                     <!--Design of Buttons-->

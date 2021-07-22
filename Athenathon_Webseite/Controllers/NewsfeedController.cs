@@ -14,8 +14,9 @@ namespace Athenathon_Webseite.Controllers
         {
             _db = db;
         }
-      
+
         // Implementation of searchoption
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Index(string searchText)
         {
             return View(_db.Newsfeeds.Where(a => a.Time.Contains(searchText) || a.Title.Contains(searchText)  || a.Author.Contains(searchText) || searchText == null).ToList()); 
@@ -25,7 +26,7 @@ namespace Athenathon_Webseite.Controllers
         // GET Create
         /* Redirects to the user creation view */
 
- 
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Create()
         {
             return View();
@@ -38,6 +39,7 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Create(Newsfeed obj)
         {
             if (ModelState.IsValid)
@@ -52,7 +54,7 @@ namespace Athenathon_Webseite.Controllers
 
         // GET Update
         /* Redirection to the view, where the User and its corresponding ID can be updated*/
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Supervisor")]
 
         public IActionResult Update(int? id)
         {
@@ -78,6 +80,7 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Update(Newsfeed obj)
         {
             {
@@ -96,6 +99,7 @@ namespace Athenathon_Webseite.Controllers
         // GET Delete
         /*  Redirection to the view where the user is displayed with the corresponding Id 
          *  and the option of deletion is available */
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Delete(int? id)
         {
             if (id == null || id <= 0)
@@ -119,6 +123,7 @@ namespace Athenathon_Webseite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult DeletePost(int? newsid)
         {
             if (newsid == null || newsid <= 0)
