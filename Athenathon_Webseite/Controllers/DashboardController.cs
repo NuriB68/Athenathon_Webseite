@@ -15,8 +15,8 @@ namespace Athenathon_Webseite.Controllers
         
         /* Nach 5 Tagen ausgiebigem Probieren (10h je) habe ich die Datenbankanbindung für das Dashboard nicht auf die 
          * Reihe gekriegt. Theoretisch sollte es so funktionieren:
-         * 1. WebMethod erstellen (um Google Chart mit Werten aus der Datenbank zu füllen.
-         * Query zieht Daten, Ergebnisse werden in Array überführt, und dann als Liste von Objekten weitergegeben
+         * 1. WebMethod erstellen (um Google Chart mit Werten aus der Datenbank zu füllen).
+         * Query zieht Daten, Ergebnisse werden in Array überführt, und dann als Liste von Objekten weitergegeben.
          * 2. Im Index View des Dashboards zuerst die Google Chart API integrieren, dann drawChart Methode nutzen um mittels
          * jQuery AJAX die WebMethod zu initialisieren. Chart einem Div ELement zuweisen.
          * 
