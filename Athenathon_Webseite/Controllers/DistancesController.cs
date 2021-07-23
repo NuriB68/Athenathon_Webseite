@@ -65,6 +65,20 @@ namespace Athenathon_Webseite.Controllers
 
         // GET Update
         /* Redirection to the view, where the Distance and its corresponding ID can be updated*/
+
+
+        /* 23.07.2021: till yesterday it was possible to upload new distance entries with distance and average speed as double/
+        floats. But today we were suddenly confronted with the problem that a comma as this ',' is not accepted anymore
+        also you can only give in values like integers or decimal dots 'x.y' like 13.04, now our biggest problem is, if we want to 
+        pass these new values to the database it is automatically converted into an integer so our example below : 
+        13.04 gets 1304 and we were not able to fix this problem. Technically we do not know how this problem occured.
+        We did not change anything in the code nor the database. Still we have tried to delete the distance table and build
+        it new again. But the problem is still present. We tried various of things but without knowing how this has 
+        happened, why it has happended so where the problem exactly is, we do not understand how to fix it.
+        Inserting data through the app still works fine. So for now sadly it is only possible to insert integer distances and 
+        average speed manually through the website.
+        .*/
+
         [Authorize(Roles = "Admin, Supervisor")]
         public IActionResult Update(int? id)  // page, where you can update or edit distances
         {

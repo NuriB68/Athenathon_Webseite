@@ -83,6 +83,13 @@ namespace Athenathon_Webseite.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // display the user manual pdf file on the website for every visitor
+        public ActionResult Usermanual()
+        {
+
+            return View();
+        }
     }
 }
 
