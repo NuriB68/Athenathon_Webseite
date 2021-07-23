@@ -25,6 +25,7 @@ namespace Athenathon_Webseite.Controllers
          * So habe ich mich für das Minimum Viable Product eines MockUp Dashboards entschieden, in dem die Daten hart gecoded sind
          * aber zumindest das Design des Dashboards fertig und sichtbar ist.
          * Ich möchte sie bitten meine mangelnde Zeitplanung nicht meinen Kommilitonen zu Last zu legen.
+         * Mangels früherer Programmiererfahrung im Team, hatten wir auch niemanden gehabt, der mir hätte helfen können.
          * Mit freundlichen Grüßen
          * Anne Schmallenbach
          */
