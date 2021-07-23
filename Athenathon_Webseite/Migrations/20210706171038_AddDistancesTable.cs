@@ -32,7 +32,7 @@ namespace Athenathon_Webseite.Migrations
                     Distance = table.Column<int>(type: "int", nullable: false),
                     TypeOfSport = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DayTime = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AverageSpeed = table.Column<int>(type: "int", nullable: false),
                     CaloriesBurned = table.Column<int>(type: "int", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: true)
